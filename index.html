@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 New Year's Ball Decorator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1>🎉 New Year's Ball Decorator 🎊</h1>
+            <p class="subtitle">Create your perfect countdown ball for New Year's Eve</p>
+        </header>
+
+        <div class="main-content">
+            <div class="ball-section">
+                <div class="ball-container" id="ballContainer">
+                    <svg id="ballSvg" viewBox="0 0 400 450">
+                        <!-- Ball string -->
+                        <line x1="200" y1="0" x2="200" y2="50" stroke="#C0C0C0" stroke-width="4" />
+                        <circle cx="200" cy="50" r="8" fill="#FFD700" />
+                        
+                        <!-- Ball body -->
+                        <circle cx="200" cy="250" r="150" fill="url(#ballGradient)" />
+                        <circle cx="200" cy="250" r="140" fill="url(#ballGradient2)" />
+                        
+                        <!-- Shine -->
+                        <ellipse cx="140" cy="180" rx="40" ry="60" fill="white" opacity="0.3" transform="rotate(-30 140 180)" />
+                        
+                        <!-- Number display area -->
+                        <rect x="130" y="200" width="140" height="80" rx="10" fill="#1a1a2e" opacity="0.8" />
+                        <text id="yearText" x="200" y="255" text-anchor="middle" fill="#FFD700" font-size="40" font-weight="bold">2026</text>
+                        
+                        <defs>
+                            <radialGradient id="ballGradient" cx="30%" cy="30%">
+                                <stop offset="0%" stop-color="#FF4500" />
+                                <stop offset="50%" stop-color="#DC143C" />
+                                <stop offset="100%" stop-color="#8B0000" />
+                            </radialGradient>
+                            <radialGradient id="ballGradient2" cx="50%" cy="50%">
+                                <stop offset="0%" stop-color="#FFD700" stop-opacity="0.3" />
+                                <stop offset="100%" stop-color="#FFD700" stop-opacity="0" />
+                            </radialGradient>
+                        </defs>
+                    </svg>
+                    
+                    <div class="decoration-zone" id="decorationZone"></div>
+                </div>
+                
+                <div class="ball-controls">
+                    <div class="control-group">
+                        <label>
+                            <span>Size</span>
+                            <input type="range" id="size" min="0.8" max="1.5" step="0.1" value="1">
+                            <span class="value" id="sizeValue">100%</span>
+                        </label>
+                    </div>
+                    <div class="control-group">
+                        <label>
+                            <span>Year</span>
+                            <input type="number" id="yearInput" value="2026" min="2000" max="2100">
+                        </label>
+                    </div>
+                    <div class="button-group">
+                        <button class="action-btn" id="sparkleBtn">✨ Enable Sparkle</button>
+                        <button class="action-btn" id="clearBtn">🗑️ Clear All</button>
+                        <button class="action-btn" id="exportBtn">📸 Export</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="decorations-panel">
+                <div class="decorations-section">
+                    <h3>🎊 Party Items</h3>
+                    <div class="decorations-grid">
+                        <div class="decoration-item" data-type="party" draggable="true">
+                            <div class="decoration-preview">🎉</div>
+                            <span>Party</span>
+                        </div>
+                        <div class="decoration-item" data-type="confetti" draggable="true">
+                            <div class="decoration-preview">🎊</div>
+                            <span>Confetti</span>
+                        </div>
+                        <div class="decoration-item" data-type="balloon" draggable="true">
+                            <div class="decoration-preview">🎈</div>
+                            <span>Balloon</span>
+                        </div>
+                        <div class="decoration-item" data-type="horn" draggable="true">
+                            <div class="decoration-preview">🎺</div>
+                            <span>Horn</span>
+                        </div>
+                        <div class="decoration-item" data-type="firework" draggable="true">
+                            <div class="decoration-preview">🎆</div>
+                            <span>Firework</span>
+                        </div>
+                        <div class="decoration-item" data-type="clock" draggable="true">
+                            <div class="decoration-preview">🕛</div>
+                            <span>Clock</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decorations-section">
+                    <h3>🥂 Celebrations</h3>
+                    <div class="decorations-grid">
+                        <div class="decoration-item" data-type="champagne" draggable="true">
+                            <div class="decoration-preview">🥂</div>
+                            <span>Cheers</span>
+                        </div>
+                        <div class="decoration-item" data-type="glass" draggable="true">
+                            <div class="decoration-preview">🍾</div>
+                            <span>Bottle</span>
+                        </div>
+                        <div class="decoration-item" data-type="cake" draggable="true">
+                            <div class="decoration-preview">🎂</div>
+                            <span>Cake</span>
+                        </div>
+                        <div class="decoration-item" data-type="gift" draggable="true">
+                            <div class="decoration-preview">🎁</div>
+                            <span>Gift</span>
+                        </div>
+                        <div class="decoration-item" data-type="star" draggable="true">
+                            <div class="decoration-preview">⭐</div>
+                            <span>Star</span>
+                        </div>
+                        <div class="decoration-item" data-type="crown" draggable="true">
+                            <div class="decoration-preview">👑</div>
+                            <span>Crown</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decorations-section">
+                    <h3>✨ Effects</h3>
+                    <div class="decorations-grid">
+                        <div class="decoration-item" data-type="sparkle" draggable="true">
+                            <div class="decoration-preview">✨</div>
+                            <span>Sparkle</span>
+                        </div>
+                        <div class="decoration-item" data-type="glow" draggable="true">
+                            <div class="decoration-preview">🌟</div>
+                            <span>Glow</span>
+                        </div>
+                        <div class="decoration-item" data-type="trophy" draggable="true">
+                            <div class="decoration-preview">🏆</div>
+                            <span>Trophy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
